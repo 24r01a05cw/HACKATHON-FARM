@@ -9,6 +9,8 @@ const FollowSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "User"
   }
-});
+}, { timestamps: true });
+
+FollowSchema.index({ consumer_id: 1, farmer_id: 1 }, { unique: true });
 
 module.exports = mongoose.model("Follow", FollowSchema);
